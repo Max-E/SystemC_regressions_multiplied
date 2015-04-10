@@ -185,8 +185,12 @@ SC_MODULE(Top)
     sc_assert( !sc_is_unwinding() );
     if (t1.valid())
       sc_assert( !t1.is_unwinding() ); 
-
-    sc_stop();
+    
+    if (!strcmp (name(), "top0"))
+    {
+        wait(20, SC_NS);
+        sc_stop();
+    }
   }
    
   void target()
